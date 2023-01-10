@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html>
+<style>
+
+</style>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<link rel="stylesheet" href="static/css/style.css" />
+	  <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/3d694a5dcc.js" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+	<title>MakeMyMoney</title>
+</head>
+<body>
+	 <!-- Header -->
+  <section id="header">
+    <div class="header container">
+      <div class="nav-bar">
+        <div class="brand">
+          <a href="#hero">
+
+          </a>
+        </div>
+        <div class="nav-list">
+          <div class="hamburger">
+            <div class="bar"></div>
+          </div>
+          <ul>
+            <li><a href="#home" >Home</a></li>
+            <li><a href="#chart" >Charts</a></li>
+            <li><a href="#services">Other</a></li>
+			<li><a href="#returns" >Returns</a></li>
+            <li><a href="#contact" >Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Header -->
+
+	<!-- Hero Section  -->
+  <section id="hero" style="background-image: url(../static/Images/5.jpg);">
+
+      <div>
+        <h1>Hello, <span></span></h1>
+        <h1>Welcome to <span></span></h1>
+        <h1>MakeMyMoney. <span></span></h1>
+        </div>
+  </section>
+  <!-- End Hero Section  -->
+
+	 <br/>
+	 <section id="home">
+		 <form action="/future" method = "POST">
+<div class="test">
+
+	<select name="stock"  class="form-control" required>
+		<option value="AUROPHARMA.NS" name="Aurobindo Pharma" >Aurobindo Pharma</option>
+		<option value="ADANIENT.NS" >Adani Enterprises Ltd</option>
+		<option value="ASHOKLEY.NS" >Ashok Leyland Limited</option>
+		<option value="AMBUJACEM.NS" >Ambuja Cements Limited</option>
+		<option value="ASIANPAINT.NS" >Asian Paints Limited</option>
+		<option value="ABFRL.NS" >Aditya Birla Fashion and Retail Limited</option>
+		<option value="AUBANK.NS" >AU Small Finance Bank Limited</option>
+
+		<option value="BANDHANBNK.NS" >Bandhan Bank</option>
+		<option value="BRITANNIA.NS" >Britannia Industries Limited </option>
+		<option value="BRITANNIA.NS" >Amara Raja Batteries Limited</option>
+		<option value="BEL.NS" >Bharat Electronics Limited</option>
+		<option value="BAJAJ-AUTO.NS" >Bajaj Auto Limited</option>
+		<option value="BHARATFORG.NS" >Bharat Forge Limited</option>
+		<option value="BSOFT.NS" >Birlasoft Limited</option>
+		<option value="BANKBARODA.NS" >Bank of Baroda</option>
+		<option value="BHEL.NS" >Bharat Heavy Electricals Limited</option>
+
+		<option selected  value="CADILAHC.NS" >Cadila Healthcare Limited</option>
+		<option value="CROMPTON.NS" >Crompton Greaves Consumer Electricals Limited</option>
+		<option value="COFORGE.NS" >Coforge Limited</option>
+		<option value="CANFINHOME.NS" >Can Fin Homes Limited</option>
+		<option value="CUB.NS" >City Union Bank Limited</option>
+		<option value="CHAMBLFERT.NS" >Chambal Fertilisers and Chemicals Limited</option>
+		<option value="COALINDIA.NS" >Coal India Limited</option>
+		<option value="CANBK.NS" >Canara Bank</option>
+
+		<option value="DELTACORP.NS" >Delta Corp. LTD</option>
+		<option value="DLF.NS" >DLF Limited</option>
+		<option value="DIVISLAB.NS" >Divi's Laboratories Limited</option>
+
+		<option value="ESCORTS.NS" >Escorts Limited</option>
+		<option value="EXIDEIND.NS" >Exide Industries Limited</option>
+
+		<option value="FEDERALBNK.NS" >The Federal Bank Limited</option>
+		<option value="FSL.NS" >Firstsource Solutions Limited</option>
+
+		<option value="GUJGASLTD.NS" >Gujarat Gas Ltd</option>
+		<option value="GMRINFRA.NS" >GMR Infrastructure Limited</option>
+		<option value="GLENMARK.NS" >Glenmark Pharmaceuticals Limited</option>
+		<option value="GODREJPROP.NS" >Godrej Properties Limited</option>
+
+		<option value="HINDALCO.NS" >Hindalco Industries Limited</option>
+		<option value="HDFCBANK.NS" >HDFC Bank Limited</option>
+		<option value="HINDUNILVR.NS" >Hindustan Unilever Limited</option>
+
+		<option value="INDIAMART.NS" >India Mart</option>
+		<option value="IBULHSGFIN.NS" >Indiabulls Housing Finance Ltd</option>
+		<option value="IEX.NS" >Indian Energy Exchange Limited </option>
+		<option value="IGL.NS" >Indraprastha Gas Limited</option>
+		<option value="IRCTC.NS" >Indian Railway Catering & Tourism Corporation Limited</option>
+		<option value="ICICIBANK.NS" >ICICI Bank Limited</option>
+		<option value="IDFCFIRSTB.NS" >IDFC First Bank Limited </option>
+		<option value="IDEA.NS" >Vodafone Idea Limited</option>
+		<option value="ICICIPRULI.NS" >ICICI Prudential Life Insurance Company Limited </option>
+		<option value="INDIGO.NS" >InterGlobe Aviation Limited</option>
+		<option value="INDHOTEL.NS" >The Indian Hotels Company Limited</option>
+		<option value="INDUSINDBK.NS" >IndusInd Bank Limited</option>
+		<option value="INDIACEM.NS" >The India Cements Limited</option>
+
+		<option value="JUBLFOOD.NS" >Jubilant FoodWorks Limited</option>
+		<option value="JKCEMENT.NS" >J.K. Cement Limited</option>
+		<option value="JSWSTEEL.NS" >JSW Steel Limited</option>
+		<option value="JINDALSTEL.NS" >Jindal Steel & Power Limited</option>
+
+		<option value="KOTAKBANK.NS" >Kotak Mahindra Bank Limited</option>
+
+		<option value="LAURUSLABS.NS" >Laurus Labs Limited </option>
+
+		<option value="MRF.NS" >MRF Limited</option>
+		<option value="MGL.NS" >Mahanagar Gas Limited</option>
+		<option value="MARUTI.NS" >Maruti Suzuki India Limited</option>
+		<option value="MARICO.NS" >Marico Limited</option>
+		<option value="MANAPPURAM.NS" >Manappuram Finance Limited</option>
+		<option value="MFSL.NS" >Max Financial Services Limited</option>
+		<option value="METROPOLIS.NS" >Metropolis Healthcare Limited</option>
+		<option value="M&MFIN.NS" >Mahindra & Mahindra Financial Services Limited</option>
+		<option value="MCDHOLDING.NS" >McDowell Holdings Limited</option>
+		<option value="MASTEK.NS" >Mastek Limited</option>
+		<option value="M&M.NS" >Mahindra & Mahindra</option>
+		<option value="MPHASIS.NS" >Mphasis Limited</option>
+
+		<option value="^NSEBANK" >NIFTY BANK</option>
+		<option value="^NSEI" >NIFTY 50</option>
+		<option value="NESTLEIND.NS" >Nestlé India Limited </option>
+		<option value="NTPC.NS" >NTPC Limited</option>
+		<option value="NAM-INDIA.NS" >Nippon Life India Asset Management Limited</option>
+		<option value="NAUKRI.NS" >Info Edge (India) Limited</option>
+		<option value="NMDC.NS" >NMDC Limited</option>
+		<option value="NATIONALUM.NS" >National Aluminium Company Limited</option>
+
+		<option value="OBEROIRLTY.NS" >Oberoi Realty Limited</option>
+
+		<option value="PAGEIND.NS" >Page Industries Limited </option>
+		<option value="PETRONET.NS" >Petronet LNG Limited</option>
+		<option value="PETRONET.NS" >Petronet LNG Limited</option>
+		<option value="PFIZER.NS" >Pfizer Limited</option>
+		<option value="POWERGRID.NS" >Power Grid Corporation of India Limited</option>
+		<option value="PIDILITIND.NS" >Pidilite Industries Limited</option>
+		<option value="PVR.NS" >PVR Limited</option>
+		<option value="PNB.NS" >Punjab National Bank</option>
+
+		<option value="RBLBANK.NS" >RBL Bank Limited</option>
+		<option value="RAMCOCEM.NS" >The Ramco Cements Limited</option>
+
+		<option selected  value="SBIN.NS" >State Bank of India</option>
+		<option value="SBICARD.NS" >SBI Cards and Payment Services Limited</option>
+		<option value="SBICARD.NS" >Dr. Lal PathLabs Limited</option>
+		<option value="SBICARD.NS" >Alkem Laboratories Limited</option>
+		<option value="SIEMENS.NS" >Siemens Limited</option>
+		<option value="SRF.NS" >SRF Limited</option>
+		<option value="SUNTV.NS" >Sun TV Network Limited</option>
+		<option value="SYNGENE.NS" >Syngene International Limited</option>
+		<option value="SBILIFE.NS" >SBI Life Insurance Company Limited</option>
+		<option value="SAIL.NS" >Steel Authority of India Limited</option>
+		<option value="STAR.NS" >Strides Pharma Science Limited</option>
+
+		<option value="TRENT.NS" >Trent Limited</option>
+		<option value="TORNTPHARM.NS" >Torrent Pharmaceuticals Limited</option>
+		<option value="TITAN.NS" >Titan Company Limited</option>
+		<option value="TATACHEM.NS" >Tata Chemicals Limited</option>
+		<option value="TATAPOWER.NS" >The Tata Power Company Limited</option>
+		<option value="TATASTEEL.NS" >Tata Steel Limited</option>
+		<option value="TCS.NS" >Tata Consultancy Services Limited</option>
+		<option value="TECHM.NS" >Tech Mahindra Limited</option>
+
+		<option value="UPL.NS" >United Phosphorus Limited</option>
+		<option value="ULTRACEMCO.NS" >UltraTech Cement Limited</option>
+		<option value="UBL.NS" >United Breweries Limited</option>
+
+		<option value="VEDL.NS" >Vedanta Limited</option>
+		<option value="VOLTAS.NS" >Voltas Limited </option>
+
+		<option value="WIPRO.NS" >Wipro Limited</option>
+
+		<option value="ZEEL.NS" >Zee Entertainment Enterprises Limited</option>
+
+</select>
+
+</div>
+			 <div class="test">
+
+    <input style="backgroung-color:rgb(240, 248, 255); color:crimson;"  class="form-control" type = "submit" value = "Go"  name="command" />
+
+			 </div>
+</form>
+
+
+
+	<div class="test">
+    <div class="card">
+		<p>Support & Resistance Chart</p>
+  <img
+		  src="data:image/png;base64, {{ sr_level_url }}"
+		  onerror="if (this.src != 'static/Images/s&r.PNG') this.src = 'static/Images/s&r.PNG';" >
+  <div class="container">
+<!--    <h4><b>John Doe</b></h4>-->
+
+	  <img style="width:40px;height:20px"
+	src="static/Images/green.png"
+	>
+	  <p>Price is Bullish</p>
+	  <img style="width:40px;height:20px"
+	src="static/Images/red.png"
+	>
+	  <p>Price is Bearish</p>
+
+	  <img style="width:40px;height:20px"
+	src="static/Images/blue.png"
+	>
+	  <p>Support & Resistance Levels</p>
+  </div>
+</div>
+<div class="card">
+	<p>Stock Prediction Graph</p>
+  <img
+		  src="data:image/png;base64, {{ line_graph_url }}"
+		  onerror="if (this.src != 'static/Images/lineprediction.PNG') this.src = 'static/Images/lineprediction.PNG';" >
+  <div class="container">
+<!--    <h4><b>John Doe</b></h4>-->
+
+<img style="width:40px;height:20px"
+	src="static/Images/blue.png"
+	>
+	  <p>Prices on Daily Basis</p>
+  </div>
+
+</div>
+</div>
+
+
+
+<div class="test" style="width:100%;margin:5px 5px 5px 5px;padding: 5px 5px 5px 5px;">
+	<table >
+  <tr>
+    <td>Stock</td>
+    <td>{{longName}}</td>
+
+  </tr>
+  <tr>
+    <td>STOP LOSS</td>
+    <td>{{stop_loss}}</td>
+
+  </tr>
+  <tr>
+    <td>Targets</td>
+    <td>{{targets}}</td>
+  </tr>
+  <tr>
+    <td>Signal</td>
+    <td>{{signal}}</td>
+  </tr>
+  <tr>
+
+</table>
+</div>
+	 </section>
+
+	<!-- news Section -->
+	<section id="services">
+		<div class="services container">
+
+      <div class="service-bottom">
+        <div class="service-item">
+          <div class="icon"><img src="static\Images\cards\nseindices.jpg" /></div>
+          <h2>NIFTY INDICES</h2>
+          <p>It is one of the two main stock indices used in India,
+			  the other being the BSE SENSEX</p>
+			<a href="https://www1.nseindia.com/live_market/dynaContent/live_watch/live_index_watch.htm" >
+			Official Website
+            </a>
+        </div>
+
+
+        <div class="service-item">
+          <div class="icon"><img src="static\Images\cards\preopen.jfif" /></div>
+          <h2>PRE-OPEN SESSION</h2>
+          <p>Pre-Open market session is utilised to arrive at the ideal opening price of a stock for the current trading session.
+			  </p>
+			<a href="https://www.nseindia.com/market-data/top-gainers-loosers" >
+			Official Website
+            </a>
+        </div>
+
+		  <div class="service-item">
+          <div class="icon"><img src="static\Images\cards\vix.png" /></div>
+          <h2>VIX</h2>
+          <p>India VIX indicates the volatility of the market and
+			  is calculated using the order book of the underlying index's options.</p>
+			<a href="https://www.moneycontrol.com/indian-indices/india-vix-36.html" >
+			Official Website
+            </a>
+        </div>
+
+		  <div class="service-item">
+          <div class="icon"><img src="static\Images\cards\topgainer.jpg" /></div>
+          <h2>TOP GAINERS/LOSERS</h2>
+          <p>Best Stocks to Buy: Here is the list of 10 of Top Gainers and Top Losers in NSE share market today. Learn more about
+			  best stocks to invest in Today stock.</p>
+			<a href="https://www.nseindia.com/market-data/top-gainers-loosers" >
+			Official Website
+            </a>
+        </div>
+      </div>
+    </div>
+
+	</section>
+<!-- end of news Section -->
+	<!-- Chart Section -->
+	<section id="chart">
+	<form action="/chart" method = "POST">
+	<br/>
+<div class="test">
+	<select name="time_period" class="form-control" required>
+
+		<option selected value="6M"  >6M</option>
+		<option value="1Y"  >1Y</option>
+		<option value="3Y" >3Y</option>
+		<option value="5Y" >5Y</option>
+		<option value="10Y" >10Y</option>
+</select>
+	<select name="stock"  class="form-control" required>
+		<option value="AUROPHARMA.NS" >Aurobindo Pharma</option>
+		<option value="ADANIENT.NS" >Adani Enterprises Ltd</option>
+		<option value="ASHOKLEY.NS" >Ashok Leyland Limited</option>
+		<option value="AMBUJACEM.NS" >Ambuja Cements Limited</option>
+		<option value="ASIANPAINT.NS" >Asian Paints Limited</option>
+		<option value="ABFRL.NS" >Aditya Birla Fashion and Retail Limited</option>
+		<option value="AUBANK.NS" >AU Small Finance Bank Limited</option>
+
+		<option value="BANDHANBNK.NS" >Bandhan Bank</option>
+		<option value="BRITANNIA.NS" >Britannia Industries Limited </option>
+		<option value="BRITANNIA.NS" >Amara Raja Batteries Limited</option>
+		<option value="BEL.NS" >Bharat Electronics Limited</option>
+		<option value="BAJAJ-AUTO.NS" >Bajaj Auto Limited</option>
+		<option value="BHARATFORG.NS" >Bharat Forge Limited</option>
+		<option value="BSOFT.NS" >Birlasoft Limited</option>
+		<option value="BANKBARODA.NS" >Bank of Baroda</option>
+		<option value="BHEL.NS" >Bharat Heavy Electricals Limited</option>
+
+		<option selected  value="CADILAHC.NS" >Cadila Healthcare Limited</option>
+		<option value="CROMPTON.NS" >Crompton Greaves Consumer Electricals Limited</option>
+		<option value="COFORGE.NS" >Coforge Limited</option>
+		<option value="CANFINHOME.NS" >Can Fin Homes Limited</option>
+		<option value="CUB.NS" >City Union Bank Limited</option>
+		<option value="CHAMBLFERT.NS" >Chambal Fertilisers and Chemicals Limited</option>
+		<option value="COALINDIA.NS" >Coal India Limited</option>
+		<option value="CANBK.NS" >Canara Bank</option>
+
+		<option value="DELTACORP.NS" >Delta Corp. LTD</option>
+		<option value="DLF.NS" >DLF Limited</option>
+		<option value="DIVISLAB.NS" >Divi's Laboratories Limited</option>
+
+		<option value="ESCORTS.NS" >Escorts Limited</option>
+		<option value="EXIDEIND.NS" >Exide Industries Limited</option>
+
+		<option value="FEDERALBNK.NS" >The Federal Bank Limited</option>
+		<option value="FSL.NS" >Firstsource Solutions Limited</option>
+
+		<option value="GUJGASLTD.NS" >Gujarat Gas Ltd</option>
+		<option value="GMRINFRA.NS" >GMR Infrastructure Limited</option>
+		<option value="GLENMARK.NS" >Glenmark Pharmaceuticals Limited</option>
+		<option value="GODREJPROP.NS" >Godrej Properties Limited</option>
+
+		<option value="HINDALCO.NS" >Hindalco Industries Limited</option>
+		<option value="HDFCBANK.NS" >HDFC Bank Limited</option>
+		<option value="HINDUNILVR.NS" >Hindustan Unilever Limited</option>
+
+		<option value="INDIAMART.NS" >India Mart</option>
+		<option value="IBULHSGFIN.NS" >Indiabulls Housing Finance Ltd</option>
+		<option value="IEX.NS" >Indian Energy Exchange Limited </option>
+		<option value="IGL.NS" >Indraprastha Gas Limited</option>
+		<option value="IRCTC.NS" >Indian Railway Catering & Tourism Corporation Limited</option>
+		<option value="ICICIBANK.NS" >ICICI Bank Limited</option>
+		<option value="IDFCFIRSTB.NS" >IDFC First Bank Limited </option>
+		<option value="IDEA.NS" >Vodafone Idea Limited</option>
+		<option value="ICICIPRULI.NS" >ICICI Prudential Life Insurance Company Limited </option>
+		<option value="INDIGO.NS" >InterGlobe Aviation Limited</option>
+		<option value="INDHOTEL.NS" >The Indian Hotels Company Limited</option>
+		<option value="INDUSINDBK.NS" >IndusInd Bank Limited</option>
+		<option value="INDIACEM.NS" >The India Cements Limited</option>
+
+		<option value="JUBLFOOD.NS" >Jubilant FoodWorks Limited</option>
+		<option value="JKCEMENT.NS" >J.K. Cement Limited</option>
+		<option value="JSWSTEEL.NS" >JSW Steel Limited</option>
+		<option value="JINDALSTEL.NS" >Jindal Steel & Power Limited</option>
+
+		<option value="KOTAKBANK.NS" >Kotak Mahindra Bank Limited</option>
+
+		<option value="LAURUSLABS.NS" >Laurus Labs Limited </option>
+
+		<option value="MRF.NS" >MRF Limited</option>
+		<option value="MGL.NS" >Mahanagar Gas Limited</option>
+		<option value="MARUTI.NS" >Maruti Suzuki India Limited</option>
+		<option value="MARICO.NS" >Marico Limited</option>
+		<option value="MANAPPURAM.NS" >Manappuram Finance Limited</option>
+		<option value="MFSL.NS" >Max Financial Services Limited</option>
+		<option value="METROPOLIS.NS" >Metropolis Healthcare Limited</option>
+		<option value="M&MFIN.NS" >Mahindra & Mahindra Financial Services Limited</option>
+		<option value="MCDHOLDING.NS" >McDowell Holdings Limited</option>
+		<option value="MASTEK.NS" >Mastek Limited</option>
+		<option value="M&M.NS" >Mahindra & Mahindra</option>
+		<option value="MPHASIS.NS" >Mphasis Limited</option>
+
+		<option selected  value="NIFTY" >Nifty50</option>
+		<option value="NESTLEIND.NS" >Nestlé India Limited </option>
+		<option value="NTPC.NS" >NTPC Limited</option>
+		<option value="NAM-INDIA.NS" >Nippon Life India Asset Management Limited</option>
+		<option value="NAUKRI.NS" >Info Edge (India) Limited</option>
+		<option value="NMDC.NS" >NMDC Limited</option>
+		<option value="NATIONALUM.NS" >National Aluminium Company Limited</option>
+
+		<option value="OBEROIRLTY.NS" >Oberoi Realty Limited</option>
+
+		<option value="PAGEIND.NS" >Page Industries Limited </option>
+		<option value="PETRONET.NS" >Petronet LNG Limited</option>
+		<option value="PETRONET.NS" >Petronet LNG Limited</option>
+		<option value="PFIZER.NS" >Pfizer Limited</option>
+		<option value="POWERGRID.NS" >Power Grid Corporation of India Limited</option>
+		<option value="PIDILITIND.NS" >Pidilite Industries Limited</option>
+		<option value="PVR.NS" >PVR Limited</option>
+		<option value="PNB.NS" >Punjab National Bank</option>
+
+		<option value="RBLBANK.NS" >RBL Bank Limited</option>
+		<option value="RAMCOCEM.NS" >The Ramco Cements Limited</option>
+
+		<option selected  value="SBIN.NS" >State Bank of India</option>
+		<option value="SBICARD.NS" >SBI Cards and Payment Services Limited</option>
+		<option value="SBICARD.NS" >Dr. Lal PathLabs Limited</option>
+		<option value="SBICARD.NS" >Alkem Laboratories Limited</option>
+		<option value="SIEMENS.NS" >Siemens Limited</option>
+		<option value="SRF.NS" >SRF Limited</option>
+		<option value="SUNTV.NS" >Sun TV Network Limited</option>
+		<option value="SYNGENE.NS" >Syngene International Limited</option>
+		<option value="SBILIFE.NS" >SBI Life Insurance Company Limited</option>
+		<option value="SAIL.NS" >Steel Authority of India Limited</option>
+		<option value="STAR.NS" >Strides Pharma Science Limited</option>
+
+		<option value="TRENT.NS" >Trent Limited</option>
+		<option value="TORNTPHARM.NS" >Torrent Pharmaceuticals Limited</option>
+		<option value="TITAN.NS" >Titan Company Limited</option>
+		<option value="TATACHEM.NS" >Tata Chemicals Limited</option>
+		<option value="TATAPOWER.NS" >The Tata Power Company Limited</option>
+		<option value="TATASTEEL.NS" >Tata Steel Limited</option>
+		<option value="TCS.NS" >Tata Consultancy Services Limited</option>
+		<option value="TECHM.NS" >Tech Mahindra Limited</option>
+
+		<option value="UPL.NS" >United Phosphorus Limited</option>
+		<option value="ULTRACEMCO.NS" >UltraTech Cement Limited</option>
+		<option value="UBL.NS" >United Breweries Limited</option>
+
+		<option value="VEDL.NS" >Vedanta Limited</option>
+		<option value="VOLTAS.NS" >Voltas Limited </option>
+
+		<option value="WIPRO.NS" >Wipro Limited</option>
+
+		<option value="ZEEL.NS" >Zee Entertainment Enterprises Limited</option>
+
+</select>
+
+    <input style="backgroung-color:rgb(240, 248, 255); color:crimson;" class="form-control" type = "submit" value = "Go"  name="command" />
+</div>
+
+</form>
+	<div class="test">
+    <div class="card">
+		    <p>Historical Data</p>
+
+  <img
+		  src="data:image/png;base64, {{ raw_candle_url }}"
+		  onerror="if (this.src != 'data:image/png;base64, {{ raw_candle_url }}') this.src = 'static/Images/chart1.PNG';" >
+  <div class="container">
+<!--    <h4><b>John Doe</b></h4>-->
+
+	  <img style="width:40px;height:20px"
+	src="static/Images/green.png"
+	>
+	  <p>Price is Bullish</p>
+	  <img style="width:40px;height:20px"
+	src="static/Images/red.png"
+	>
+	  <p>Price is Bearish</p>
+
+
+  </div>
+</div>
+
+	<div class="card">
+	    <p>Historical Data</p>
+
+  <img
+		  src="data:image/png;base64, {{ line_graph_url }}"
+		  onerror="if (this.src != 'static/Images/chart3.PNG') this.src = 'static/Images/chart3.PNG';" >
+
+  <div class="container">
+<!--    <h4><b>John Doe</b></h4>-->
+
+<img style="width:40px;height:20px"
+	src="static/Images/blue.png"
+	>
+	  <p>Prices on Daily Basis</p>
+  </div>
+</div>
+</div>
+	<div class="test" style="width:100%;margin:5px 5px 5px 5px;padding: 5px 5px 5px 5px;">
+	<table >
+  <tr>
+    <td>Company</td>
+    <td>{{longName}}</td>
+
+  </tr>
+		<tr>
+    <td>Website</td>
+    <td>
+		<a href={{website}}>
+			Official Website
+		</a>
+	</td>
+
+  </tr>
+  <tr>
+    <td>Sector</td>
+    <td>{{sector}}</td>
+
+  </tr>
+  <tr>
+    <td>Return On Equity</td>
+    <td>{{returnOnEquity}}</td>
+  </tr>
+  <tr>
+    <td>Total Cash</td>
+    <td>{{totalCash}}</td>
+  </tr>
+		<tr>
+    <td>Total Cash Per Share</td>
+    <td>{{totalCashPerShare}}</td>
+  </tr>
+		<tr>
+    <td>Debt To Equity</td>
+    <td>{{debtToEquity}}</td>
+  </tr>
+		<tr>
+    <td>Book Value</td>
+    <td>{{bookValue}}</td>
+  </tr>
+		<tr>
+    <td>Market Cap</td>
+    <td>{{marketCap}}</td>
+  </tr>
+		<tr>
+    <td>Volume</td>
+    <td>{{volume}}</td>
+  </tr>
+		<tr>
+    <td>52W High</td>
+    <td>{{fiftyTwoWeekHigh}}</td>
+  </tr>
+		<tr>
+    <td>52W Low</td>
+    <td>{{fiftyTwoWeekLow}}</td>
+  </tr>
+  <tr>
+
+</table>
+</div>
+</section>
+	<!--End of Chart Section -->
+
+	 <h1 class="section-title">Calculate Investment <span>Returns</span></h1>
+	 <section id="returns">
+		 <form action="/cal" method = "POST">
+
+<select name="time_period" class="form-control" required>
+
+		<option selected value="6M"  >6M</option>
+		<option value="1Y"  >1Y</option>
+		<option value="3Y" >2Y</option>
+		<option value="5Y" >4Y</option>
+</select>
+
+	<select name="stock"  class="form-control" required>
+		<option value="AUROPHARMA.NS" >Aurobindo Pharma</option>
+		<option value="ADANIENT.NS" >Adani Enterprises Ltd</option>
+		<option value="ASHOKLEY.NS" >Ashok Leyland Limited</option>
+		<option value="AMBUJACEM.NS" >Ambuja Cements Limited</option>
+		<option value="ASIANPAINT.NS" >Asian Paints Limited</option>
+		<option value="ABFRL.NS" >Aditya Birla Fashion and Retail Limited</option>
+		<option value="AUBANK.NS" >AU Small Finance Bank Limited</option>
+
+		<option value="BANDHANBNK.NS" >Bandhan Bank</option>
+		<option value="BRITANNIA.NS" >Britannia Industries Limited </option>
+		<option value="BRITANNIA.NS" >Amara Raja Batteries Limited</option>
+		<option value="BEL.NS" >Bharat Electronics Limited</option>
+		<option value="BAJAJ-AUTO.NS" >Bajaj Auto Limited</option>
+		<option value="BHARATFORG.NS" >Bharat Forge Limited</option>
+		<option value="BSOFT.NS" >Birlasoft Limited</option>
+		<option value="BANKBARODA.NS" >Bank of Baroda</option>
+		<option value="BHEL.NS" >Bharat Heavy Electricals Limited</option>
+
+		<option selected  value="CADILAHC.NS" >Cadila Healthcare Limited</option>
+		<option value="CROMPTON.NS" >Crompton Greaves Consumer Electricals Limited</option>
+		<option value="COFORGE.NS" >Coforge Limited</option>
+		<option value="CANFINHOME.NS" >Can Fin Homes Limited</option>
+		<option value="CUB.NS" >City Union Bank Limited</option>
+		<option value="CHAMBLFERT.NS" >Chambal Fertilisers and Chemicals Limited</option>
+		<option value="COALINDIA.NS" >Coal India Limited</option>
+		<option value="CANBK.NS" >Canara Bank</option>
+
+		<option value="DELTACORP.NS" >Delta Corp. LTD</option>
+		<option value="DLF.NS" >DLF Limited</option>
+		<option value="DIVISLAB.NS" >Divi's Laboratories Limited</option>
+
+		<option value="ESCORTS.NS" >Escorts Limited</option>
+		<option value="EXIDEIND.NS" >Exide Industries Limited</option>
+
+		<option value="FEDERALBNK.NS" >The Federal Bank Limited</option>
+		<option value="FSL.NS" >Firstsource Solutions Limited</option>
+
+		<option value="GUJGASLTD.NS" >Gujarat Gas Ltd</option>
+		<option value="GMRINFRA.NS" >GMR Infrastructure Limited</option>
+		<option value="GLENMARK.NS" >Glenmark Pharmaceuticals Limited</option>
+		<option value="GODREJPROP.NS" >Godrej Properties Limited</option>
+
+		<option value="HINDALCO.NS" >Hindalco Industries Limited</option>
+		<option value="HDFCBANK.NS" >HDFC Bank Limited</option>
+		<option value="HINDUNILVR.NS" >Hindustan Unilever Limited</option>
+
+		<option value="INDIAMART.NS" >India Mart</option>
+		<option value="IBULHSGFIN.NS" >Indiabulls Housing Finance Ltd</option>
+		<option value="IEX.NS" >Indian Energy Exchange Limited </option>
+		<option value="IGL.NS" >Indraprastha Gas Limited</option>
+		<option value="IRCTC.NS" >Indian Railway Catering & Tourism Corporation Limited</option>
+		<option value="ICICIBANK.NS" >ICICI Bank Limited</option>
+		<option value="IDFCFIRSTB.NS" >IDFC First Bank Limited </option>
+		<option value="IDEA.NS" >Vodafone Idea Limited</option>
+		<option value="ICICIPRULI.NS" >ICICI Prudential Life Insurance Company Limited </option>
+		<option value="INDIGO.NS" >InterGlobe Aviation Limited</option>
+		<option value="INDHOTEL.NS" >The Indian Hotels Company Limited</option>
+		<option value="INDUSINDBK.NS" >IndusInd Bank Limited</option>
+		<option value="INDIACEM.NS" >The India Cements Limited</option>
+
+		<option value="JUBLFOOD.NS" >Jubilant FoodWorks Limited</option>
+		<option value="JKCEMENT.NS" >J.K. Cement Limited</option>
+		<option value="JSWSTEEL.NS" >JSW Steel Limited</option>
+		<option value="JINDALSTEL.NS" >Jindal Steel & Power Limited</option>
+
+		<option value="KOTAKBANK.NS" >Kotak Mahindra Bank Limited</option>
+
+		<option value="LAURUSLABS.NS" >Laurus Labs Limited </option>
+
+		<option value="MRF.NS" >MRF Limited</option>
+		<option value="MGL.NS" >Mahanagar Gas Limited</option>
+		<option value="MARUTI.NS" >Maruti Suzuki India Limited</option>
+		<option value="MARICO.NS" >Marico Limited</option>
+		<option value="MANAPPURAM.NS" >Manappuram Finance Limited</option>
+		<option value="MFSL.NS" >Max Financial Services Limited</option>
+		<option value="METROPOLIS.NS" >Metropolis Healthcare Limited</option>
+		<option value="M&MFIN.NS" >Mahindra & Mahindra Financial Services Limited</option>
+		<option value="MCDHOLDING.NS" >McDowell Holdings Limited</option>
+		<option value="MASTEK.NS" >Mastek Limited</option>
+		<option value="M&M.NS" >Mahindra & Mahindra</option>
+		<option value="MPHASIS.NS" >Mphasis Limited</option>
+
+		<option selected  value="NIFTY" >Nifty50</option>
+		<option value="NESTLEIND.NS" >Nestlé India Limited </option>
+		<option value="NTPC.NS" >NTPC Limited</option>
+		<option value="NAM-INDIA.NS" >Nippon Life India Asset Management Limited</option>
+		<option value="NAUKRI.NS" >Info Edge (India) Limited</option>
+		<option value="NMDC.NS" >NMDC Limited</option>
+		<option value="NATIONALUM.NS" >National Aluminium Company Limited</option>
+
+		<option value="OBEROIRLTY.NS" >Oberoi Realty Limited</option>
+
+		<option value="PAGEIND.NS" >Page Industries Limited </option>
+		<option value="PETRONET.NS" >Petronet LNG Limited</option>
+		<option value="PETRONET.NS" >Petronet LNG Limited</option>
+		<option value="PFIZER.NS" >Pfizer Limited</option>
+		<option value="POWERGRID.NS" >Power Grid Corporation of India Limited</option>
+		<option value="PIDILITIND.NS" >Pidilite Industries Limited</option>
+		<option value="PVR.NS" >PVR Limited</option>
+		<option value="PNB.NS" >Punjab National Bank</option>
+
+		<option value="RBLBANK.NS" >RBL Bank Limited</option>
+		<option value="RAMCOCEM.NS" >The Ramco Cements Limited</option>
+
+		<option selected  value="SBIN.NS" >State Bank of India</option>
+		<option value="SBICARD.NS" >SBI Cards and Payment Services Limited</option>
+		<option value="SBICARD.NS" >Dr. Lal PathLabs Limited</option>
+		<option value="SBICARD.NS" >Alkem Laboratories Limited</option>
+		<option value="SIEMENS.NS" >Siemens Limited</option>
+		<option value="SRF.NS" >SRF Limited</option>
+		<option value="SUNTV.NS" >Sun TV Network Limited</option>
+		<option value="SYNGENE.NS" >Syngene International Limited</option>
+		<option value="SBILIFE.NS" >SBI Life Insurance Company Limited</option>
+		<option value="SAIL.NS" >Steel Authority of India Limited</option>
+		<option value="STAR.NS" >Strides Pharma Science Limited</option>
+
+		<option value="TRENT.NS" >Trent Limited</option>
+		<option value="TORNTPHARM.NS" >Torrent Pharmaceuticals Limited</option>
+		<option value="TITAN.NS" >Titan Company Limited</option>
+		<option value="TATACHEM.NS" >Tata Chemicals Limited</option>
+		<option value="TATAPOWER.NS" >The Tata Power Company Limited</option>
+		<option value="TATASTEEL.NS" >Tata Steel Limited</option>
+		<option value="TCS.NS" >Tata Consultancy Services Limited</option>
+		<option value="TECHM.NS" >Tech Mahindra Limited</option>
+
+		<option value="UPL.NS" >United Phosphorus Limited</option>
+		<option value="ULTRACEMCO.NS" >UltraTech Cement Limited</option>
+		<option value="UBL.NS" >United Breweries Limited</option>
+
+		<option value="VEDL.NS" >Vedanta Limited</option>
+		<option value="VOLTAS.NS" >Voltas Limited </option>
+
+		<option value="WIPRO.NS" >Wipro Limited</option>
+
+		<option value="ZEEL.NS" >Zee Entertainment Enterprises Limited</option>
+
+</select>
+
+
+		     <input style="background-color:rgb(240, 248, 255); color:crimson;" class="form-control" type = "submit" value = "Calculate"  name="command" />
+
+	 </form>
+
+
+		 <div class="test" style="width:100%;margin:5px 5px 5px 5px;padding: 5px 5px 5px 5px;">
+		<table >
+			<tr>
+    <td>Company</td>
+    <td>{{longName}}</td>
+
+  </tr>
+  <tr>
+    <td>Return on CMP</td>
+    <td>{{return_percent}}</td>
+
+  </tr>
+
+			<tr>
+    <td>Current Market Price</td>
+    <td>{{last_closing}}</td>
+
+  </tr>
+
+
+</table>
+
+	</div>
+	 </section>
+
+	<!-- Contact Section -->
+  <section id="contact">
+    <div class="contact container">
+      <div>
+        <h1 class="section-title">Contact <span>info</span></h1>
+      </div>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/phone.png" /></div>
+          <div class="contact-info">
+            <h1>Phone</h1>
+            <h2>+1 234 123 1234</h2>
+            <h2>+1 234 123 1234</h2>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/new-post.png" /></div>
+          <div class="contact-info">
+            <h1>Email</h1>
+            <h2>info@gmail.com</h2>
+            <h2>abcd@gmail.com</h2>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/map-marker.png" /></div>
+          <div class="contact-info">
+            <h1>Address</h1>
+            <h2>Fatikchhari, Chittagong, Bangladesh</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Contact Section -->
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script src="static/js/main.js"></script>
+</body>
+
+</html>

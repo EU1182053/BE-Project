@@ -1,0 +1,10 @@
+flask
+Flask-Compress
+matplotlib
+sklearn
+nsepy
+mpl-finance
+pandas
+numpy
+yfinance
+tensorflow
