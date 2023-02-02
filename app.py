@@ -48,7 +48,7 @@ def company_data(ticker):
     # Enter the start and end dates using the method date(yyyy,m,dd)
     # stock = get_history(symbol=ticker, start=start, end=end, index=True)
     msft = yf.Ticker(ticker)
-
+    print(longName)
     # get stock info
 
     longName = msft.info["longName"]
@@ -133,7 +133,8 @@ def future():
     if request.method == "POST":
 
         current_userinput = request.form.get("stock", None)
-        company_data(current_userinput)
+        print(current_userinput)
+        # company_data(current_userinput)
         df = obtain_data(current_userinput, datetime.date.today() - relativedelta(months=6), datetime.date.today())
 
         detect_trend(df)
@@ -237,7 +238,7 @@ def future():
 
         def plot_all():
             figr, ax = plt.subplots()
-            plt.title(f'{longName} Prices')
+            plt.title('State Bank Of India Prices')
             candlestick_ohlc(ax, df.values, width=1, colorup='green', colordown='red', alpha=1)
             date_format = mpl_dates.DateFormatter('%d %b %Y')
             ax.grid(True)
@@ -311,7 +312,7 @@ def future():
         ax.set_ylabel('Price')
 
         # setting title
-        plt.title(f'{longName} Prices')
+        plt.title('State Bank Of India Prices')
         # Setting labels
 
         ax.set_xlabel('Date')
@@ -319,7 +320,7 @@ def future():
         ax.set_ylabel('Price')
 
         # setting title
-        plt.title(f'{longName} Prices')
+        plt.title('State Bank Of India Prices')
         # Formatting Date
 
         date_format = mpdates.DateFormatter('%d-%m-%Y')
@@ -366,7 +367,7 @@ def cal():
         else:
             df = obtain_data(current_userinput, datetime.date.today() - relativedelta(years=16), datetime.date.today() )
 
-        company_data(current_userinput)
+        # company_data(current_userinput)
 
         last_closing = df['Close'].iloc[-2]
         last_closing1 = "₹" + str(round(df['Close'].iloc[-2], 2))
@@ -452,7 +453,7 @@ def cal():
         ax.set_ylabel('Price')
 
         # setting title
-        plt.title(f'{longName} Prices')
+        plt.title('State Bank Of India Prices')
         # Setting labels
 
         ax.set_xlabel('Date')
@@ -460,7 +461,7 @@ def cal():
         ax.set_ylabel('Price')
 
         # setting title
-        plt.title(f'{longName} Prices')
+        plt.title('State Bank Of India Prices')
         # Formatting Date
 
         date_format = mpdates.DateFormatter('%d-%m-%Y')
@@ -556,7 +557,7 @@ def show_chart():
         ax.set_ylabel('Price')
 
         # setting title
-        plt.title(f'{longName} Prices')
+        plt.title('State Bank Of India Prices')
 
         # Formatting Date
         date_format = mpdates.DateFormatter('%d-%m-%Y')
@@ -597,7 +598,7 @@ def show_chart():
         ax.set_ylabel('Price')
 
         # setting title
-        plt.title(f'{longName} Prices')
+        plt.title('State Bank Of India Prices')
         # Setting labels
 
         ax.set_xlabel('Date')
@@ -605,7 +606,7 @@ def show_chart():
         ax.set_ylabel('Price')
 
         # setting title
-        plt.title(f'{longName} Prices')
+        plt.title('State Bank Of India Prices')
         # Formatting Date
 
         date_format = mpdates.DateFormatter('%d-%m-%Y')
