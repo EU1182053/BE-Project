@@ -1,24 +1,24 @@
-import base64
-import datetime
-import math
+from base64 import b64encode
+from datetime import date, timedelta
+from math import floor
 from io import BytesIO
 
 from dateutil.relativedelta import relativedelta
 from flask import Flask, render_template, request
 from mplfinance.original_flavor import candlestick_ohlc
-import matplotlib.dates as mpdates
+from matplotlib.pyplot import rc, plot, subplots, title, hlines, savefig
 from sklearn.preprocessing import MinMaxScaler
-import pandas as pd
-import numpy as np
-import matplotlib.dates as mpl_dates
-import matplotlib.pyplot as plt
+from pandas import to_datetime,DataFrame
+from numpy import array, reshape, mean, sum
+
+from matplotlib.dates import DateFormatter, date2num
 from matplotlib.pylab import rcParams
-import yfinance as yf
+from yfinance import Ticker, download
 from tensorflow.python.keras import Sequential
 from tensorflow.python.keras.layers import LSTM, Dense
 
 rcParams['figure.figsize'] = 8, 6
-plt.rc('font', size=14)
+rc('font', size=14)
 
 scaler = MinMaxScaler(feature_range=(0, 1))
 app = Flask(__name__)
@@ -48,10 +48,7 @@ def company_data(ticker):
     # Enter the start and end dates using the method date(yyyy,m,dd)
     # stock = get_history(symbol=ticker, start=start, end=end, index=True)
 
-
-    msft = yf.Ticker(ticker)
-
-
+    msft = Ticker(ticker)
 
     # get stock info
     #
@@ -73,7 +70,7 @@ def obtain_data(ticker, start, end):
     # Enter the start and end dates using the method date(yyyy,m,dd)
     # stock = get_history(symbol=ticker, start=start, end=end, index=True)
 
-    stock = yf.download(ticker, start, end)
+    stock = download(ticker, start, end)
     print(stock)
     df = stock.copy()
     df = df.reset_index()
@@ -142,22 +139,22 @@ def future():
         company_data(current_userinput)
         # except Exception as e:
         #     print(e)
-        df = obtain_data(current_userinput, datetime.date.today() - relativedelta(months=6), datetime.date.today())
+        df = obtain_data(current_userinput, date.today() - relativedelta(months=6), date.today())
 
         detect_trend(df)
 
-        df['Date'] = df['Date'].apply(mpl_dates.date2num)
+        df['Date'] = df['Date'].apply(date2num)
 
-        df["Date"] = pd.to_datetime(df.Date)
+        df["Date"] = to_datetime(df.Date)
         df.index = df['Date']
 
-        train_value = math.floor(len(df) * 0.7)
-        remain_value = math.floor(len(df) - train_value)
+        train_value = floor(len(df) * 0.7)
+        remain_value = floor(len(df) - train_value)
 
         # close data
 
         close_data = df.sort_index(ascending=True, axis=0)
-        new_close_dataset = pd.DataFrame(index=range(0, len(df)), columns=['Date', "Close"])
+        new_close_dataset = DataFrame(index=range(0, len(df)), columns=['Date', "Close"])
 
         for i in range(0, len(close_data)):
             new_close_dataset["Date"][i] = close_data['Date'][i]
@@ -179,9 +176,9 @@ def future():
             x_train_close_data.append(scaled_close_data[i - 60:i, 0])
             y_train_close_data.append(scaled_close_data[i, 0])
 
-        x_train_close_data, y_train_close_data = np.array(x_train_close_data), np.array(y_train_close_data)
+        x_train_close_data, y_train_close_data = array(x_train_close_data), array(y_train_close_data)
 
-        x_train_close_data = np.reshape(x_train_close_data,
+        x_train_close_data = reshape(x_train_close_data,
                                         (x_train_close_data.shape[0], x_train_close_data.shape[1], 1))
 
         # close
@@ -202,24 +199,24 @@ def future():
         X_close_test = []
         for i in range(60, inputs_close_data.shape[0]):
             X_close_test.append(inputs_close_data[i - 60:i, 0])
-        X_close_test = np.array(X_close_test)
+        X_close_test = array(X_close_test)
 
-        X_close_test = np.reshape(X_close_test, (X_close_test.shape[0], X_close_test.shape[1], 1))
+        X_close_test = reshape(X_close_test, (X_close_test.shape[0], X_close_test.shape[1], 1))
         prediction_closing = lstm_model.predict(X_close_test)
         prediction_closing = scaler.inverse_transform(prediction_closing)
 
-        valid_close_data = pd.DataFrame(index=range(0, len(prediction_closing)), columns=["Date", "Predictions"])
+        valid_close_data = DataFrame(index=range(0, len(prediction_closing)), columns=["Date", "Predictions"])
 
         # for i in range(0,len(prediction_opening)):
         valid_close_data["Predictions"] = prediction_closing
 
         # valid_open_data["Predictions"].dtypes
 
-        plt.plot(valid_close_data[["Predictions"]])
+        plot(valid_close_data[["Predictions"]])
 
-        df = obtain_data(current_userinput,  datetime.date.today() - relativedelta(months=6), datetime.date.today())
-        df['Date'] = pd.to_datetime(df.index)
-        df['Date'] = df['Date'].apply(mpl_dates.date2num)
+        df = obtain_data(current_userinput,  date.today() - relativedelta(months=6), date.today())
+        df['Date'] = to_datetime(df.index)
+        df['Date'] = df['Date'].apply(date2num)
         last_closing = df['Close'].iloc[-1]
 
         def isSupport(df, i):
@@ -244,22 +241,22 @@ def future():
                 levels.append((i, df['High'][i]))
 
         def plot_all():
-            figr, ax = plt.subplots()
-            plt.title(f'{longName} Prices')
+            figr, ax = subplots()
+            title(f'{longName} Prices')
             candlestick_ohlc(ax, df.values, width=1, colorup='green', colordown='red', alpha=1)
-            date_format = mpl_dates.DateFormatter('%d %b %Y')
+            date_format = DateFormatter('%d %b %Y')
             ax.grid(True)
             ax.xaxis.set_major_formatter(date_format)
             figr.autofmt_xdate()
             figr.tight_layout()
 
             for level in levels:
-                plt.hlines(level[1], xmin=df['Date'][level[0]], xmax=max(df['Date']), colors='blue')
+                hlines(level[1], xmin=df['Date'][level[0]], xmax=max(df['Date']), colors='blue')
 
-        s = np.mean(df['High'] - df['Low'])
+        s = mean(df['High'] - df['Low'])
 
         def isFarFromLevel(l):
-            return np.sum([abs(l - x) < s for x in levels]) == 0
+            return sum([abs(l - x) < s for x in levels]) == 0
 
         levels = []
         for i in range(2, df.shape[0] - 2):
@@ -278,37 +275,37 @@ def future():
         trade_3(levels, last_closing)
 
         STOCK = BytesIO()
-        plt.savefig(STOCK, format="png")
+        savefig(STOCK, format="png")
         STOCK.seek(0)
-        sr_level_url = base64.b64encode(STOCK.getvalue()).decode('utf8')
+        sr_level_url = b64encode(STOCK.getvalue()).decode('utf8')
 
         current_userinput = request.form.get("stock", None)
 
-        # df = obtain_data(current_userinput, datetime.date.today() - relativedelta(months=6), datetime.date.today() - relativedelta(days=2))
+        # df = obtain_data(current_userinput, date.today() - relativedelta(months=6), date.today() - relativedelta(days=2))
         #
-        # df['Date'] = pd.to_datetime(df.index)
+        # df['Date'] = to_datetime(df.index)
         #
-        # df['Date'] = df['Date'].apply(mpl_dates.date2num)
+        # df['Date'] = df['Date'].apply(date2num)
         #
-        # df["Date"] = pd.to_datetime(df.Date)
+        # df["Date"] = to_datetime(df.Date)
         #
         # df.index = df['Date']
         #
-        # train_value = math.floor(len(df) * 0.9)
+        # train_value = floor(len(df) * 0.9)
         #
-        # remain_value = math.floor(len(df) - train_value)
+        # remain_value = floor(len(df) - train_value)
         # # close data
         #
         # close_data = df.sort_index(ascending=True, axis=0)
-        # new_close_dataset = pd.DataFrame(index=range(0, len(df)), columns=['Date', "Close"])
+        # new_close_dataset = DataFrame(index=range(0, len(df)), columns=['Date', "Close"])
 
-        base = datetime.date.today() - relativedelta(days=2)
+        base = date.today() - relativedelta(days=2)
         for x in range(0, remain_value):
-            valid_close_data['Date'][x] = (base + datetime.timedelta(days=x))
+            valid_close_data['Date'][x] = (base + timedelta(days=x))
         valid_close_data.index = valid_close_data.Date
         # creating Subplots
 
-        fig, ax = plt.subplots(figsize=(8, 6))
+        fig, ax = subplots(figsize=(8, 6))
 
         # allow grid
 
@@ -319,7 +316,7 @@ def future():
         ax.set_ylabel('Price')
 
         # setting title
-        plt.title(f'{longName} Prices')
+        title(f'{longName} Prices')
         # Setting labels
 
         ax.set_xlabel('Date')
@@ -327,10 +324,10 @@ def future():
         ax.set_ylabel('Price')
 
         # setting title
-        plt.title(f'{longName} Prices')
+        title(f'{longName} Prices')
         # Formatting Date
 
-        date_format = mpdates.DateFormatter('%d-%m-%Y')
+        date_format = DateFormatter('%d-%m-%Y')
 
         ax.xaxis.set_major_formatter(date_format)
 
@@ -340,15 +337,15 @@ def future():
 
         # show the plot
 
-        plt.plot(valid_close_data[["Predictions"]])  # prediction-blue
+        plot(valid_close_data[["Predictions"]])  # prediction-blue
 
         STOCK = BytesIO()
 
-        plt.savefig(STOCK, format="png")
+        savefig(STOCK, format="png")
 
         STOCK.seek(0)
 
-        line_graph_url = base64.b64encode(STOCK.getvalue()).decode('utf8')
+        line_graph_url = b64encode(STOCK.getvalue()).decode('utf8')
 
         return render_template("form.html",
                                line_graph_url=line_graph_url,
@@ -366,13 +363,13 @@ def cal():
     if request.method == "POST":
         time_period, current_userinput = request.form.get("time_period", None), request.form.get("stock", None)
         if time_period == "6M":
-            df = obtain_data(current_userinput, datetime.date.today() - relativedelta(years=2), datetime.date.today() )
+            df = obtain_data(current_userinput, date.today() - relativedelta(years=2), date.today() )
         elif time_period == "1Y":
-            df = obtain_data(current_userinput, datetime.date.today() - relativedelta(years=4), datetime.date.today() )
+            df = obtain_data(current_userinput, date.today() - relativedelta(years=4), date.today() )
         elif time_period == "2Y":
-            df = obtain_data(current_userinput, datetime.date.today() - relativedelta(years=8), datetime.date.today() )
+            df = obtain_data(current_userinput, date.today() - relativedelta(years=8), date.today() )
         else:
-            df = obtain_data(current_userinput, datetime.date.today() - relativedelta(years=16), datetime.date.today() )
+            df = obtain_data(current_userinput, date.today() - relativedelta(years=16), date.today() )
 
         try:
             company_data(current_userinput)
@@ -381,18 +378,18 @@ def cal():
 
         last_closing = df['Close'].iloc[-2]
         last_closing1 = "₹" + str(round(df['Close'].iloc[-2], 2))
-        df['Date'] = df['Date'].apply(mpl_dates.date2num)
+        df['Date'] = df['Date'].apply(date2num)
 
-        df["Date"] = pd.to_datetime(df.Date)
+        df["Date"] = to_datetime(df.Date)
         df.index = df['Date']
 
-        train_value = math.floor(len(df) * 0.8)
-        remain_value = math.floor(len(df) - train_value)
+        train_value = floor(len(df) * 0.8)
+        remain_value = floor(len(df) - train_value)
 
         # close data
 
         close_data = df.sort_index(ascending=True, axis=0)
-        new_close_dataset = pd.DataFrame(index=range(0, len(df)), columns=['Date', "Close"])
+        new_close_dataset = DataFrame(index=range(0, len(df)), columns=['Date', "Close"])
 
         for i in range(0, len(close_data)):
             new_close_dataset["Date"][i] = close_data['Date'][i]
@@ -414,9 +411,9 @@ def cal():
             x_train_close_data.append(scaled_close_data[i - 60:i, 0])
             y_train_close_data.append(scaled_close_data[i, 0])
 
-        x_train_close_data, y_train_close_data = np.array(x_train_close_data), np.array(y_train_close_data)
+        x_train_close_data, y_train_close_data = array(x_train_close_data), array(y_train_close_data)
 
-        x_train_close_data = np.reshape(x_train_close_data,
+        x_train_close_data = reshape(x_train_close_data,
                                         (x_train_close_data.shape[0], x_train_close_data.shape[1], 1))
 
         # close
@@ -437,22 +434,22 @@ def cal():
         X_close_test = []
         for i in range(60, inputs_close_data.shape[0]):
             X_close_test.append(inputs_close_data[i - 60:i, 0])
-        X_close_test = np.array(X_close_test)
+        X_close_test = array(X_close_test)
 
-        X_close_test = np.reshape(X_close_test, (X_close_test.shape[0], X_close_test.shape[1], 1))
+        X_close_test = reshape(X_close_test, (X_close_test.shape[0], X_close_test.shape[1], 1))
         prediction_closing = lstm_model.predict(X_close_test)
         prediction_closing = scaler.inverse_transform(prediction_closing)
 
-        valid_close_data = pd.DataFrame(index=range(0, len(prediction_closing)), columns=["Date", "Predictions"])
+        valid_close_data = DataFrame(index=range(0, len(prediction_closing)), columns=["Date", "Predictions"])
         valid_close_data["Predictions"] = prediction_closing
 
-        base = datetime.date.today() - relativedelta(days=2)
+        base = date.today() - relativedelta(days=2)
         for x in range(0, remain_value):
-            valid_close_data['Date'][x] = (base + datetime.timedelta(days=x))
+            valid_close_data['Date'][x] = (base + timedelta(days=x))
         valid_close_data.index = valid_close_data.Date
         # creating Subplots
 
-        fig, ax = plt.subplots(figsize=(8, 6))
+        fig, ax = subplots(figsize=(8, 6))
 
         # allow grid
 
@@ -463,7 +460,7 @@ def cal():
         ax.set_ylabel('Price')
 
         # setting title
-        plt.title(f'{longName} Prices')
+        title(f'{longName} Prices')
         # Setting labels
 
         ax.set_xlabel('Date')
@@ -471,10 +468,10 @@ def cal():
         ax.set_ylabel('Price')
 
         # setting title
-        plt.title('State Bank Of India Prices')
+        title('State Bank Of India Prices')
         # Formatting Date
 
-        date_format = mpdates.DateFormatter('%d-%m-%Y')
+        date_format = DateFormatter('%d-%m-%Y')
 
         ax.xaxis.set_major_formatter(date_format)
 
@@ -484,15 +481,15 @@ def cal():
 
         # show the plot
 
-        plt.plot(valid_close_data[["Predictions"]])  # prediction-blue
+        plot(valid_close_data[["Predictions"]])  # prediction-blue
 
         STOCK = BytesIO()
 
-        plt.savefig(STOCK, format="png")
+        savefig(STOCK, format="png")
 
         STOCK.seek(0)
 
-        line_graph_url = base64.b64encode(STOCK.getvalue()).decode('utf8')
+        line_graph_url = b64encode(STOCK.getvalue()).decode('utf8')
         # for i in range(0,len(prediction_opening)):
         valid_close_data["Predictions"] = prediction_closing
         max_price = (max(prediction_closing))[0]
@@ -525,21 +522,21 @@ def show_chart():
     if request.method == "POST":
         time_period, current_userinput = request.form.get("time_period", None), request.form.get("stock", None)
         if time_period == "6M":
-            data = obtain_data(current_userinput, datetime.date.today() - relativedelta(months=6), datetime.date.today() - relativedelta(days=2))
+            data = obtain_data(current_userinput, date.today() - relativedelta(months=6), date.today() - relativedelta(days=2))
         elif time_period == "1Y":
-            data = obtain_data(current_userinput, datetime.date.today() - relativedelta(year=1), datetime.date.today() - relativedelta(days=2))
+            data = obtain_data(current_userinput, date.today() - relativedelta(year=1), date.today() - relativedelta(days=2))
         elif time_period == "3Y":
-            data = obtain_data(current_userinput, datetime.date.today() - relativedelta(years=3), datetime.date.today() - relativedelta(days=2))
+            data = obtain_data(current_userinput, date.today() - relativedelta(years=3), date.today() - relativedelta(days=2))
         elif time_period == "5Y":
-            data = obtain_data(current_userinput, datetime.date.today() - relativedelta(years=5), datetime.date.today() - relativedelta(days=2))
+            data = obtain_data(current_userinput, date.today() - relativedelta(years=5), date.today() - relativedelta(days=2))
         else:
-            data = obtain_data(current_userinput, datetime.date.today() - relativedelta(years=10), datetime.date.today() - relativedelta(days=2))
+            data = obtain_data(current_userinput, date.today() - relativedelta(years=10), date.today() - relativedelta(days=2))
         try:
             company_data(current_userinput)
         except Exception as e:
             pass
         # Calling DataFrame constructor
-        df = pd.DataFrame({
+        df = DataFrame({
             'Date': [i for i in data['Date']],
             'Open': [i for i in data['Open']],
             'High': [i for i in data['High']],
@@ -549,13 +546,13 @@ def show_chart():
         })
 
         # convert into datetime object
-        df['Date'] = pd.to_datetime(df['Date'])
+        df['Date'] = to_datetime(df['Date'])
 
         # apply map function
-        df['Date'] = df['Date'].map(mpdates.date2num)
+        df['Date'] = df['Date'].map(date2num)
 
         # creating Subplots
-        fig, ax = plt.subplots(figsize=(8, 6))
+        fig, ax = subplots(figsize=(8, 6))
 
         # plotting the data
         candlestick_ohlc(ax, df.values, width=1,
@@ -570,10 +567,10 @@ def show_chart():
         ax.set_ylabel('Price')
 
         # setting title
-        plt.title(f'{longName} Prices')
+        title(f'{longName} Prices')
 
         # Formatting Date
-        date_format = mpdates.DateFormatter('%d-%m-%Y')
+        date_format = DateFormatter('%d-%m-%Y')
         ax.xaxis.set_major_formatter(date_format)
         fig.autofmt_xdate()
 
@@ -584,23 +581,23 @@ def show_chart():
         # show the plot
 
         STOCK = BytesIO()
-        plt.savefig(STOCK, format="png")
+        savefig(STOCK, format="png")
         STOCK.seek(0)
-        raw_candle_url = base64.b64encode(STOCK.getvalue()).decode('utf8')
+        raw_candle_url = b64encode(STOCK.getvalue()).decode('utf8')
 
-        df = pd.DataFrame({
+        df = DataFrame({
             'Date': [i for i in data['Date']],
             'Close': [i for i in data['Close']],
         })
         df.index = df.Date
         # convert into datetime object
-        df['Date'] = pd.to_datetime(df['Date'])
+        df['Date'] = to_datetime(df['Date'])
 
         # apply map function
-        df['Date'] = df['Date'].map(mpdates.date2num)
+        df['Date'] = df['Date'].map(date2num)
         # creating Subplots
 
-        fig, ax = plt.subplots(figsize=(8, 6))
+        fig, ax = subplots(figsize=(8, 6))
 
         # allow grid
 
@@ -611,7 +608,7 @@ def show_chart():
         ax.set_ylabel('Price')
 
         # setting title
-        plt.title(f'{longName} Prices')
+        title(f'{longName} Prices')
         # Setting labels
 
         ax.set_xlabel('Date')
@@ -619,10 +616,10 @@ def show_chart():
         ax.set_ylabel('Price')
 
         # setting title
-        plt.title(f'{longName} Prices')
+        title(f'{longName} Prices')
         # Formatting Date
 
-        date_format = mpdates.DateFormatter('%d-%m-%Y')
+        date_format = DateFormatter('%d-%m-%Y')
 
         ax.xaxis.set_major_formatter(date_format)
 
@@ -632,15 +629,15 @@ def show_chart():
 
         # show the plot
 
-        plt.plot(data["Close"])  # prediction-blue
+        plot(data["Close"])  # prediction-blue
 
         STOCK = BytesIO()
 
-        plt.savefig(STOCK, format="png")
+        savefig(STOCK, format="png")
 
         STOCK.seek(0)
 
-        line_graph_url = base64.b64encode(STOCK.getvalue()).decode('utf8')
+        line_graph_url = b64encode(STOCK.getvalue()).decode('utf8')
 
         return render_template("form.html",
                                line_graph_url=line_graph_url,
@@ -658,3 +655,7 @@ def show_chart():
                                fiftyTwoWeekLow=fiftyTwoWeekLow,
                                website=website
                                )
+
+
+if __name__ == '__main__':
+   app.run()
